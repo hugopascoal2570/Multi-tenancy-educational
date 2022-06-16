@@ -1,4 +1,39 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+Atenção! 
+
+## Sistema em desenvolvimento ( Apenas para estudo, sem fins lucrativos)
+
+## Iniciando o projeto
+
+* Baixe o repositório em sua máquina local. 
+* dê o comando composer update dentro da pasta atual do projeto para baixar as depedencias do laravel
+* depois dê o comando  cp .env.example .env para criar o arquivo .env de sua aplicação.
+* crie seu banco de dados em seu ambiente, e depois informe o nome do mesmo no arquivo .env e coloco o nome do seu banco de dados depois do DB_DATABASE=
+* depois digite o comando php artisan key:generate.
+* e por ultimo digite o comando php artisan migrate --seed
+* depois vá em App->Providers->AuthServiceProvider e apague o comentário presente no código
+
+## Acessando o projeto.
+* para acessar o projeto basta ir para a URL
+http://127.0.0.1:8000/admin e acessar o sistema com os seguintes dados
+email: admin@admin.com
+password: 123456789
+* com esses dados você será um super Administrador do sistema
+* o sistema vem com um plano de assinatura apenas. 
+
+## Atenção 
+Ao criar as permissões seguir o mesmo nome que está presente no arquivo adminlte.php da pasta config. pois o projeto está planejado para reconhecer as strings presentes no projeto. 
+exemplo: 
+quando você for inserir a permissão para listar usuários você deve ir até o arquivo adminlte da pasta config e verificiar o nome dado a permissão de usuários. como na imagem a seguir
+
+        [
+            'text'        => 'Usuários',
+            'url'         => 'admin/users',
+            'icon'        => 'fa fa-solid fa-users',
+            'can'         => 'users',
+        ],
+
+
+p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
 <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
