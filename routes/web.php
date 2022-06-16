@@ -53,14 +53,6 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::any('tables/search', [TableController::class, 'search'])->name('tables.search');
     Route::resource('tables', TableController::class);
 
-    //routes products x categories
-    
-    /*Route::get('products/{id}/category/{idCategory}/detach', [CategoryProductController::class, 'detachCategoryProduct'])->name('products.category.detach');
-    Route::post('products/{id}/categories', [CategoryProductController::class, 'attachCategoriesProduct'])->name('products.categories.attach');
-    Route::any('products/{id}/categories/create', [CategoryProductController::class, 'categoriesAvailable'])->name('products.categories.available');
-    Route::get('products/{id}/categories', [CategoryProductController::class, 'categories'])->name('products.categories');
-    Route::get('categories/{id}/products', [CategoryProductController::class, 'products'])->name('categories.products');
-    */
 
     //routes financeiro 
     Route::any('financial/search', [FinancialController::class, 'search'])->name('financial.search');
