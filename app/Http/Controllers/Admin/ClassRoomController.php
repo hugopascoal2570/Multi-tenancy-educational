@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\ClassRoom;
+use App\Models\Room;
+use App\Models\Subject;
 use Illuminate\Http\Request;
 
 class ClassRoomController extends Controller
@@ -34,9 +36,10 @@ class ClassRoomController extends Controller
      */
     public function create()
     {
-        $classroom = $this->repository->with('rooms')->get();
-        dd($classroom);
-        return view('admin.pages.classroom.create');
+        $classes = Room::all(); 
+        $subjects = Subject::all();
+
+        return view('admin.pages.classroom.create',compact('classes','subjects'));
     }
 
     /**
@@ -47,8 +50,8 @@ class ClassRoomController extends Controller
      */
     public function store(Request $request)
     {
-        $classroom = $this->repository->with('rooms')->get();
-        dd($classroom);
+        $data = $request->all();
+        dd($data);
     }
 
     /**

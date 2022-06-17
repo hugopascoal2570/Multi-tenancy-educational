@@ -14,7 +14,7 @@
                 @csrf
                 @method('PUT')
 
-                @include('admin.pages.rooms._partials.form')
+                @include('admin.pages.subjects._partials.form')
             </form>
         </div>
     </div>

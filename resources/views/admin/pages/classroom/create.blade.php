@@ -11,6 +11,7 @@
         <div class="card-body">
             <form action="{{ route('classrooms.store') }}" class="form" method="POST">
                 @include('admin.pages.classroom._partials.form')
+                @csrf
             </form>
         </div>
     </div>
