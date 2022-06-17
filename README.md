@@ -32,6 +32,107 @@ quando você for inserir a permissão para listar usuários você deve ir até o
             'can'         => 'users',
         ],
 
+##  para quem quer acompanhar acompanhar como o sistema está ficando está aqui está a versão atual de minhas tabelas.
+
+## Permission
+            'name' => 'plans',
+            'description' => '',
+            'created_at' => now(),
+            'updated_at' => now(),
+
+            'name' => 'profiles',
+            'description' => '',
+            'created_at' => now(),
+            'updated_at' => now(),
+        
+            'name' => 'permissions',
+            'description' => '',
+            'created_at' => now(),
+            'updated_at' => now(),
+
+            'name' => 'roles',
+            'description' => '',
+            'created_at' => now(),
+            'updated_at' => now(),
+
+            'name' => 'users',
+            'description' => '',
+            'created_at' => now(),
+            'updated_at' => now(),
+
+            'name' => 'classrooms',
+            'description' => '',
+            'created_at' => now(),
+            'updated_at' => now(),
+
+            'name' => 'libraries',
+            'description' => '',
+            'created_at' => now(),
+            'updated_at' => now(),
+
+            'name' => 'financial',
+            'description' => '',
+            'created_at' => now(),
+            'updated_at' => now(),
+
+            'name' => 'tables',
+            'description' => '',
+            'created_at' => now(),
+            'updated_at' => now(),
+
+            'name' => 'subjects',
+            'description' => '',
+            'created_at' => now(),
+            'updated_at' => now(),
+
+            'name' => 'rooms',
+            'description' => '',
+            'created_at' => now(),
+            'updated_at' => now(),
+
+## Role
+            'name' => 'Admin',
+            'description' => '',
+            'created_at' => now(),
+            'updated_at' => now(),
+
+            'name' => 'Bibliotecário(a)',
+            'description' => '',
+            'created_at' => now(),
+            'updated_at' => now(),
+
+            'name' => 'Secretário(a)',
+            'description' => '',
+            'created_at' => now(),
+            'updated_at' => now(),
+
+            'name' => 'Professor(a)',
+            'description' => '',
+            'created_at' => now(),
+            'updated_at' => now(),
+
+## Profile
+            'name' => 'Admin',
+            'description' => 'Perfil do Administrador',
+            'created_at' => now(),
+            'updated_at' => now(),
+
+            'name' => 'Bibliotecário(a)',
+            'description' => 'Perfil do Bibliotecário(a)',
+            'created_at' => now(),
+            'updated_at' => now(),
+    
+            'name' => 'Secretário(a)',
+            'description' => 'Perfil do Secretário(a)',
+            'created_at' => now(),
+            'updated_at' => now(),
+
+            'name' => 'Financeiro(a)',
+            'description' => 'Perfil do Financeiro(a)',
+            'created_at' => now(),
+            'updated_at' => now(),
+    );
+
 
 p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
