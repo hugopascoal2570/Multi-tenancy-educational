@@ -34,6 +34,8 @@ class ClassRoomController extends Controller
      */
     public function create()
     {
+        $classroom = $this->repository->with('rooms')->get();
+        dd($classroom);
         return view('admin.pages.classroom.create');
     }
 
@@ -45,7 +47,8 @@ class ClassRoomController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $classroom = $this->repository->with('rooms')->get();
+        dd($classroom);
     }
 
     /**

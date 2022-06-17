@@ -12,4 +12,8 @@ class ClassRoom extends Model
     protected $table = 'classroom';
 
     protected $fillable = ['name','user_id','tenant_id'];
+
+    public function rooms(){
+        return $this->belongsToMany(Room::class);
+    }
 }

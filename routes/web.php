@@ -14,12 +14,12 @@ use App\Http\Controllers\Admin\DetailPlanController;
 use App\Http\Controllers\Admin\FinancialController;
 use App\Http\Controllers\Admin\LibraryController;
 use App\Http\Controllers\Admin\RolesController;
+use App\Http\Controllers\Admin\RoomController;
+use App\Http\Controllers\Admin\SubjectController;
 use App\Http\Controllers\Admin\TableController;
 use App\Http\Controllers\Admin\TenantController;
 use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\RoomController;
 use App\Http\Controllers\Site\SiteController;
-use App\Http\Controllers\SubjectController;
 use App\Models\Tenant;
 use Illuminate\Support\Facades\Auth;
 
