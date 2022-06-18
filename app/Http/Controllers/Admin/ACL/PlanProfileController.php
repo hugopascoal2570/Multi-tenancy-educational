@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 
 class PlanProfileController extends Controller
 {
-
     protected $plan, $profile;
 
     public function __construct(Plan $plan, Profile $profile)
@@ -19,6 +18,7 @@ class PlanProfileController extends Controller
 
         $this->middleware(['can:plans']);
     }
+
     public function profiles($idPlan)
     {
         if (!$plan = $this->plan->find($idPlan)) {
@@ -30,14 +30,19 @@ class PlanProfileController extends Controller
         return view('admin.pages.plans.profiles.profiles', compact('plan', 'profiles'));
     }
 
-    public function plans($idPlan)
+
+    public function plans($idProfile)
     {
-        if (!$plan = $this->plan->find($idPlan)) {
+        if (!$profile = $this->profile->find($idProfile)) {
             return redirect()->back();
         }
-        $profiles = $plan->profiles()->paginate();
-        return view('admin.pages.plans.profiles.profiles', compact('plan', 'profiles'));
+
+        $plans = $profile->plans()->paginate();
+
+        return view('admin.pages.profiles.plans.plans', compact('profile', 'plans'));
     }
+
+
     public function profilesAvailable(Request $request, $idPlan)
     {
         if (!$plan = $this->plan->find($idPlan)) {
@@ -60,8 +65,8 @@ class PlanProfileController extends Controller
 
         if (!$request->profiles || count($request->profiles) == 0) {
             return redirect()
-                ->back()
-                ->with('info', 'Precisa escolher pelo menos um plano');
+                        ->back()
+                        ->with('info', 'Precisa escolher pelo menos um plano');
         }
 
         $plan->profiles()->attach($request->profiles);

@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin\ACL;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdatePermission;
-use App\Http\Requests\StoreUpdatePermissionRequest;
 use App\Models\Permission;
 use Illuminate\Http\Request;
 
@@ -47,7 +46,7 @@ class PermissionController extends Controller
      * @param  \App\Http\Requests\StoreUpdatePermission  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreUpdatePermissionRequest $request)
+    public function store(StoreUpdatePermission $request)
     {
         $this->repository->create($request->all());
 
@@ -91,7 +90,7 @@ class PermissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreUpdatePermissionRequest $request, $id)
+    public function update(StoreUpdatePermission $request, $id)
     {
         if (!$permission = $this->repository->find($id)) {
             return redirect()->back();
@@ -130,13 +129,13 @@ class PermissionController extends Controller
         $filters = $request->only('filter');
 
         $permissions = $this->repository
-            ->where(function ($query) use ($request) {
-                if ($request->filter) {
-                    $query->where('name', $request->filter);
-                    $query->orWhere('description', 'LIKE', "%{$request->filter}%");
-                }
-            })
-            ->paginate();
+                            ->where(function($query) use ($request) {
+                                if ($request->filter) {
+                                    $query->where('name', $request->filter);
+                                    $query->orWhere('description', 'LIKE', "%{$request->filter}%");
+                                }
+                            })
+                            ->paginate();
 
         return view('admin.pages.permissions.index', compact('permissions', 'filters'));
     }

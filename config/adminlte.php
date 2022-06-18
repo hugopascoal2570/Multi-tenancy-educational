@@ -302,7 +302,7 @@ return [
             'text'        => 'Empresas',
             'url'         => 'admin/tenants',
             'icon'        => 'fa fa-solid fa-building',
-            'can'         => 'tables'
+            'can'         => 'tenants'
         ],
 
 

@@ -29,6 +29,7 @@ return new class extends Migration
             ->references('id')
             ->on('tenants')
             ->onDelete('cascade');
+
         });
     }
 

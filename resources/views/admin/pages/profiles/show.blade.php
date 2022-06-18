@@ -1,30 +1,30 @@
 @extends('adminlte::page')
 
-@section('title', "Detalhes do Perfil { $profiles->name }")
+@section('title', "Detalhes do perfil {$profile->name}")
 
 @section('content_header')
-    <h1>Detalhes do plano{{ $profiles->name }}</h1>
-
+    <h1>Detalhes do perfil <b>{{ $profile->name }}</b></h1>
 @stop
 
 @section('content')
-    @include('admin.includes.alerts')
     <div class="card">
-        <div class="car-body">
+        <div class="card-body">
             <ul>
                 <li>
-                    <strong>Nome: </strong>{{ $profiles->name }}
+                    <strong>Nome: </strong> {{ $profile->name }}
                 </li>
                 <li>
-                    <strong>Descrição: </strong>{{ $profiles->description }}
+                    <strong>Descrição: </strong> {{ $profile->description }}
                 </li>
             </ul>
-        </div>
 
+            @include('admin.includes.alerts')
+
+            <form action="{{ route('profiles.destroy', $profile->id) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> DELETAR O PERFIL: {{ $profile->name }}</button>
+            </form>
+        </div>
     </div>
-    <form action="{{ route('profiles.destroy', ['profile' => $profiles->id]) }}" method="POST">
-        @method('DELETE')
-        @csrf
-        <button type="submit" class="btn btn-danger">Deletar o {{ $profiles->name }}</button>
-    </form>
-@stop
+@endsection

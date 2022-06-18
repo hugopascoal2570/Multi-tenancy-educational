@@ -9,8 +9,6 @@ trait UserACLTrait
 {
     public function permissions(): array
     {
-
-       
         $permissionsPlan = $this->permissionsPlan();
         $permissionsRole = $this->permissionsRole();
 

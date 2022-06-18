@@ -4,17 +4,23 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\ClassRoom;
+use App\Models\Profile;
+use App\Models\Role;
 use App\Models\Room;
 use App\Models\Subject;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ClassRoomController extends Controller
 {
 
-    protected $repository;
-    public function __construct(ClassRoom $model)
+    protected $repository, $model;
+    public function __construct(ClassRoom $classroom, User $user)
     {
-        $this->repository = $model;
+        $this->repository = $classroom;
+        $this->model = $user;
+
+        $this->middleware(['can:classrooms']);
     }
 
     /**
@@ -25,6 +31,7 @@ class ClassRoomController extends Controller
     public function index()
     {
         $classroom = $this->repository->paginate();
+
 
         return view('admin.pages.classroom.index', compact('classroom'));
     }
@@ -37,9 +44,10 @@ class ClassRoomController extends Controller
     public function create()
     {
         $classes = Room::all(); 
-        $subjects = Subject::all();
 
-        return view('admin.pages.classroom.create',compact('classes','subjects'));
+        $teachers = $this->model->latest()->RoleUser()->paginate();
+
+        return view('admin.pages.classroom.create',compact('classes','teachers'));
     }
 
     /**
@@ -50,8 +58,13 @@ class ClassRoomController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        dd($data);
+        $data = $request->only(['name','sala','user_id','tenant_id']);
+        $data['user_id'] = auth()->id();
+        $data['tenant_id'] = auth()->user()->tenant_id;
+
+        $classrooms = $this->repository->create($data);
+        $classrooms->subjects()->sync($data['disciplina']);
+
     }
 
     /**

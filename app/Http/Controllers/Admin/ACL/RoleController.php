@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\ACL;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateRole;
+use App\Http\Controllers\Controller;
 use App\Models\Role;
 use Illuminate\Http\Request;
 
-class RolesController extends Controller
+class RoleController extends Controller
 {
     protected $repository;
 
@@ -129,13 +129,13 @@ class RolesController extends Controller
         $filters = $request->only('filter');
 
         $roles = $this->repository
-            ->where(function ($query) use ($request) {
-                if ($request->filter) {
-                    $query->where('name', $request->filter);
-                    $query->orWhere('description', 'LIKE', "%{$request->filter}%");
-                }
-            })
-            ->paginate();
+                            ->where(function($query) use ($request) {
+                                if ($request->filter) {
+                                    $query->where('name', $request->filter);
+                                    $query->orWhere('description', 'LIKE', "%{$request->filter}%");
+                                }
+                            })
+                            ->paginate();
 
         return view('admin.pages.roles.index', compact('roles', 'filters'));
     }

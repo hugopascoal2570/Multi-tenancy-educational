@@ -59,7 +59,7 @@ class PermissionRoleController extends Controller
     }
 
 
-    public function attachPermissionsProfile(Request $request, $idRole)
+    public function attachPermissionsRole(Request $request, $idRole)
     {
         if (!$role = $this->role->find($idRole)) {
             return redirect()->back();
@@ -67,8 +67,8 @@ class PermissionRoleController extends Controller
 
         if (!$request->permissions || count($request->permissions) == 0) {
             return redirect()
-                ->back()
-                ->with('info', 'Precisa escolher pelo menos uma permissão');
+                        ->back()
+                        ->with('info', 'Precisa escolher pelo menos uma permissão');
         }
 
         $role->permissions()->attach($request->permissions);
@@ -89,6 +89,4 @@ class PermissionRoleController extends Controller
 
         return redirect()->route('roles.permissions', $role->id);
     }
-
-    
 }

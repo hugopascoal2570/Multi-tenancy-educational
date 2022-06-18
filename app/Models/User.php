@@ -58,6 +58,15 @@ class User extends Authenticatable
         return $query->where('tenant_id', auth()->user()->tenant_id);
     }
 
+    public function scopeRoleUser(Builder $query)
+    {
+        return $query->whereHas('roles', function($q){
+            $q->where('name', 'LIKE','%'.'Professor(a)'.'%');
+            $q->where('tenant_id', auth()->user()->tenant_id);
+        });
+    }
+
+
     public function tenant()
     {
         return $this->belongsTo(Tenant::class);
@@ -67,6 +76,7 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Role::class);
     }
+
 
     public function rolesAvailable($filter = null)
     {

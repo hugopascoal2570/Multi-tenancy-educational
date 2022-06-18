@@ -18,21 +18,20 @@
                 </div>
             </div>
 
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <!-- Select multiple-->
-                      <div class="form-group">
-                        <label>Selecione as matérias que deseja</label>
-                        <select multiple class="form-control" name="disciplina[]">
-                        @foreach ( $subjects as $subject)
-                          <option value="{{$subject->id}}" >{{$subject->name}}</option>
-                          @endforeach
-                        </select>
-                      </div>
-                    </div>
-                </div>
-
-
+            <div class="form-group row">
+              <label class="col-sm-2 col-from-label">Selecione os professores</label>
+              <div class="col-sm-4">
+                  <select multiple class="form-control" name="teachers[]" >
+                      @foreach ( $teachers as $teacher)
+                      @if ($teacher->name == 'admin')
+                      
+                      @else
+                        <option value="{{$teacher->id}}">{{$teacher->name}}</option>
+                        @endif
+                        @endforeach
+                      </select>
+              </div>
+          </div>
                 <div class="form-group row">
                 <label class="col-sm-2 col-from-label"></label>
                 <input type="submit" value="cadastrar" class="btn btn-success">

@@ -67,8 +67,8 @@ class RoleUserController extends Controller
 
         if (!$request->roles || count($request->roles) == 0) {
             return redirect()
-                ->back()
-                ->with('info', 'Precisa escolher pelo menos uma permissão');
+                        ->back()
+                        ->with('info', 'Precisa escolher pelo menos uma permissão');
         }
 
         $user->roles()->attach($request->roles);
