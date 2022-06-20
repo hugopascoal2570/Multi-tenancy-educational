@@ -45,7 +45,7 @@ class ClassRoomController extends Controller
     {
         $classes = Room::all(); 
 
-        $teachers = $this->model->latest()->RoleUser()->paginate();
+        $teachers = $this->model->latest()->paginate();
 
         return view('admin.pages.classroom.create',compact('classes','teachers'));
     }

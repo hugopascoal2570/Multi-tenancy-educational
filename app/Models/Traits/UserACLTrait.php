@@ -2,7 +2,6 @@
 
 namespace App\Models\Traits;
 
-use App\Models\Permission;
 use App\Models\Tenant;
 
 trait UserACLTrait
@@ -13,7 +12,6 @@ trait UserACLTrait
         $permissionsRole = $this->permissionsRole();
 
         $permissions = [];
-
         foreach ($permissionsRole as $permission) {
             if (in_array($permission, $permissionsPlan))
                 array_push($permissions, $permission);
@@ -25,7 +23,7 @@ trait UserACLTrait
     public function permissionsPlan(): array
     {
         // $tenant = $this->tenant;
-        //$plan = $tenant->plan;
+        // $plan = $tenant->plan;
         $tenant = Tenant::with('plan.profiles.permissions')->where('id', $this->tenant_id)->first();
         $plan = $tenant->plan;
 
@@ -35,6 +33,7 @@ trait UserACLTrait
                 array_push($permissions, $permission->name);
             }
         }
+
         return $permissions;
     }
 
@@ -48,13 +47,13 @@ trait UserACLTrait
                 array_push($permissions, $permission->name);
             }
         }
+
         return $permissions;
     }
 
-    public function hasPermission(String $PermissionName): bool
+    public function hasPermission(string $permissionName): bool
     {
-
-        return in_array($PermissionName, $this->permissions());
+        return in_array($permissionName, $this->permissions());
     }
 
     public function isAdmin(): bool

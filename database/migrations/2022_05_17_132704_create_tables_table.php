@@ -14,16 +14,17 @@ return new class extends Migration
     public function up()
     {
         Schema::create('tables', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('tenant_id');
-            $table->string('identify')->unique();
+            $table->uuid('uuid');
+            $table->string('identify');
             $table->string('description')->nullable();
             $table->timestamps();
 
             $table->foreign('tenant_id')
-                ->references('id')
-                ->on('tenants')
-                ->onDelete('cascade');
+                        ->references('id')
+                        ->on('tenants')
+                        ->onDelete('cascade');
         });
     }
 

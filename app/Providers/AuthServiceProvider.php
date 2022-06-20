@@ -28,6 +28,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
+        
         $permissions = Permission::all();
 
         foreach ($permissions as $permission) {
@@ -45,5 +46,6 @@ class AuthServiceProvider extends ServiceProvider
                 return true;
             }
         });
+        
     }
 }
