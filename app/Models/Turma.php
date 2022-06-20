@@ -2,22 +2,15 @@
 
 namespace App\Models;
 
-use App\Models\Traits\UserACLTrait;
-use App\Tenant\Traits\TenantTrait;
-use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
-class ClassRoom extends Model
+class Turma extends Model
 {
     use HasFactory;
 
-    use TenantTrait;
-    use UserACLTrait;
-
-    protected $table = 'classroom';
-
-    protected $fillable = ['name','user_id','tenant_id','subject_id'];
+    protected $fillable = ['name','room_id','tenant_id'];
 
 
     public function tenant()
@@ -32,5 +25,11 @@ class ClassRoom extends Model
         return $this->belongsToMany(Subject::class);
     }
 
-
+    public function teachers(){
+        return $this->belongsToMany(User::class,'teacher_turma');
+    }
+    public function scopeTenantUser(Builder $query)
+    {
+        return $query->where('tenant_id', auth()->user()->tenant_id);
+    }
 }

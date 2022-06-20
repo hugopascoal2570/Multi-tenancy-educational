@@ -3,14 +3,14 @@
 @section('title', 'Cadastrar Nova Permissão')
 
 @section('content_header')
-    <h1>Cadastrar Nova Sala de Aula</h1>
+    <h1>Cadastrar Nova Turma</h1>
 @stop
 
 @section('content')
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('classrooms.store') }}" class="form" method="POST">
-                @include('admin.pages.classroom._partials.form')
+            <form action="{{ route('turmas.store') }}" class="form" method="POST">
+                @include('admin.pages.turmas._partials.form')
                 @csrf
             </form>
         </div>

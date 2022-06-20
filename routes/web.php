@@ -2,7 +2,6 @@
 
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\ClassRoomController;
 use App\Http\Controllers\Admin\ACL\PermissionController;
 use App\Http\Controllers\Admin\ACL\PermissionProfileController;
 use App\Http\Controllers\Admin\ACL\PermissionRoleController;
@@ -18,6 +17,7 @@ use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\Admin\SubjectController;
 use App\Http\Controllers\Admin\TableController;
 use App\Http\Controllers\Admin\TenantController;
+use App\Http\Controllers\Admin\TurmaController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Site\SiteController;
 use App\Models\Tenant;
@@ -76,8 +76,8 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::resource('rooms', RoomController::class);
 
     //routes classroom 
-    Route::any('classrooms/search', [ClassRoomController::class, 'search'])->name('classrooms.search');
-    Route::resource('classrooms', ClassRoomController::class);
+    Route::any('turmas/search', [TurmaController::class, 'search'])->name('turmas.search');
+    Route::resource('turmas', TurmaController::class);
 
     //routes library
     Route::any('libraries/search', [LibraryController::class, 'search'])->name('libraries.search');

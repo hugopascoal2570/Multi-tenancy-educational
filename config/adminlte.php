@@ -270,9 +270,9 @@ return [
         ],
         [
             'text'        => 'Turmas',
-            'url'         => 'admin/classrooms',
+            'url'         => 'admin/turmas',
             'icon'        => 'fa fa-solid fas fa-hamburger',
-            'can'         => 'classrooms'
+            'can'         => 'turmas'
         ],
         [
             'text'        => 'Salas',

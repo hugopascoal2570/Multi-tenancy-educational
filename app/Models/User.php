@@ -51,7 +51,7 @@ class User extends Authenticatable
      * @return \Illuminate\Database\Eloquent\Builder
      */
 
-    public function scopeRoleUser(Builder $query)
+    public function scopeRoleTeacher(Builder $query)
     {
         return $query->whereHas('roles', function($q){
             $q->where('name', 'LIKE','%'.'Professor(a)'.'%');
@@ -78,6 +78,10 @@ class User extends Authenticatable
     public function roles()
     {
         return $this->belongsToMany(Role::class);
+    }
+
+    public function teachers(){
+        return $this->belongsToMany(User::class);
     }
 
     /**

@@ -1,20 +1,20 @@
 @extends('adminlte::page')
 
-@section('title', 'Permissões')
+@section('title', 'Turmas')
 
 @section('content_header')
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Dashboard</a></li>
-        <li class="breadcrumb-item active"><a href="{{ route('classrooms.index') }}" class="active">Salas de Aula</a></li>
+        <li class="breadcrumb-item active"><a href="{{ route('turmas.index') }}" class="active">Turmas</a></li>
     </ol>
 
-    <h1>Salas de Aula <a href="{{ route('classrooms.create') }}" class="btn btn-success">Adicionar</a></h1>
+    <h1>Turmas <a href="{{ route('turmas.create') }}" class="btn btn-success">Adicionar</a></h1>
 @stop
 
 @section('content')
     <div class="card">
         <div class="card-header">
-            <form action="{{ route('classrooms.search') }}" method="POST" class="form form-inline">
+            <form action="{{ route('turmas.search') }}" method="POST" class="form form-inline">
                 @csrf
                 <input type="text" name="filter" placeholder="Filtro" class="form-control" value="{{ $filters['filter'] ?? '' }}">
                 <button type="submit" class="btn btn-dark">Filtrar</button>
@@ -29,14 +29,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($classroom as $classrooms)
+                    @foreach ($classes as $class)
                         <tr>
                             <td>
-                                {{ $classrooms->name }}
+                                {{ $class->name }}
                             </td>
                             <td style="width=10px;">
-                                <a href="{{ route('classrooms.edit', $classroom->id) }}" class="btn btn-info">Edit</a>
-                                <a href="{{ route('classrooms.show', $classroom->id) }}" class="btn btn-warning">VER</a>
+                                <a href="{{ route('turmas.edit', $class->id) }}" class="btn btn-info">Edit</a>
+                                <a href="{{ route('turmas.show', $class->id) }}" class="btn btn-warning">VER</a>
                                 
                             </td>
                         </tr>
@@ -46,9 +46,9 @@
         </div>
         <div class="card-footer">
             @if (isset($filters))
-                {!! $classroom->appends($filters)->links() !!}
+                {!! $classes->appends($filters)->links() !!}
             @else
-                {!! $classroom->links() !!}
+                {!! $classes->links() !!}
             @endif
         </div>
     </div>

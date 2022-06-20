@@ -64,6 +64,7 @@ class TableController extends Controller
         if (!$table = $this->repository->find($id)) {
             return redirect()->back();
         }
+        dd($table);
 
         return view('admin.pages.tables.show', compact('table'));
     }
