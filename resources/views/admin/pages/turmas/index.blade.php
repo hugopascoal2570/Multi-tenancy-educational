@@ -25,7 +25,7 @@
                 <thead>
                     <tr>
                         <th>Nome</th>
-                        <th width="250">Ações</th>
+                        <th width="500">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,10 +34,10 @@
                             <td>
                                 {{ $class->name }}
                             </td>
-                            <td style="width=10px;">
+                            <td style="width=100px;">
                                 <a href="{{ route('turmas.edit', $class->id) }}" class="btn btn-info">Edit</a>
                                 <a href="{{ route('turmas.show', $class->id) }}" class="btn btn-warning">VER</a>
-                                
+                                <a href="{{ route('turmas.teachers', $class->id) }}" class="btn btn-success">Professor(a)</a>
                             </td>
                         </tr>
                     @endforeach

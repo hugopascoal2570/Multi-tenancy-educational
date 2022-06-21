@@ -37,7 +37,6 @@ class AppServiceProvider extends ServiceProvider
     {
         Plan::observe(PlanObserver::class);
         Tenant::observe(TenantObserver::class);
-        Category::observe(CategoryObserver::class);
         Product::observe(ProductObserver::class);
     }
 }

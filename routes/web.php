@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\SubjectController;
 use App\Http\Controllers\Admin\TableController;
 use App\Http\Controllers\Admin\TenantController;
 use App\Http\Controllers\Admin\TurmaController;
+use App\Http\Controllers\Admin\TurmaTeacherController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Site\SiteController;
 use App\Models\Tenant;
@@ -74,6 +75,23 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     //routes rooms
     Route::any('rooms/search', [RoomController::class, 'search'])->name('rooms.search');
     Route::resource('rooms', RoomController::class);
+
+    /**
+     * Permission x Role
+     */
+    Route::get('turmas/{id}/teacher/{idTeacher}/detach', [TurmaTeacherController::class,'detachTeacherTurma'])->name('turmas.teacher.detach');
+    Route::post('turmas/{id}/teachers', [TurmaTeacherController::class,'attachTeachersTurma'])->name('turmas.teacher.attach');
+    Route::any('turmas/{id}/teachers/create', [TurmaTeacherController::class,'teachersAvailable'])->name('turmas.teacher.available');
+    Route::get('turmas/{id}/teachers', [TurmaTeacherController::class,'teachers'])->name('turmas.teachers');
+
+        /**
+     * Plan x Profile
+     */
+    Route::get('plans/{id}/profile/{idProfile}/detach', [PlanProfileController::class,'detachProfilePlan'])->name('plans.profile.detach');
+    Route::post('plans/{id}/profiles', [PlanProfileController::class,'attachProfilesPlan'])->name('plans.profiles.attach');
+    Route::any('plans/{id}/profiles/create', [PlanProfileController::class,'profilesAvailable'])->name('plans.profiles.available');
+    Route::get('plans/{id}/profiles', [PlanProfileController::class,'profiles'])->name('plans.profiles');
+    Route::get('profiles/{id}/plans', [PlanProfileController::class,'plans'])->name('profiles.plans');
 
     //routes classroom 
     Route::any('turmas/search', [TurmaController::class, 'search'])->name('turmas.search');
